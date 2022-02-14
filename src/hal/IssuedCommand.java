@@ -103,7 +103,7 @@ public interface IssuedCommand extends EObject {
 	 * @see #setActuator(Actuator)
 	 * @see hal.HalPackage#getIssuedCommand_Actuator()
 	 * @see hal.Actuator#getCommands
-	 * @model opposite="commands" required="true"
+	 * @model opposite="commands"
 	 * @generated
 	 */
 	Actuator getActuator();

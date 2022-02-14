@@ -3,6 +3,7 @@
 package hal.impl;
 
 import hal.Actuator;
+import hal.ActuatorType;
 import hal.HalPackage;
 import hal.IssuedCommand;
 import hal.Room;
@@ -34,6 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link hal.impl.ActuatorImpl#getRoom <em>Room</em>}</li>
  *   <li>{@link hal.impl.ActuatorImpl#getPossibleCommands <em>Possible Commands</em>}</li>
  *   <li>{@link hal.impl.ActuatorImpl#getCommands <em>Commands</em>}</li>
+ *   <li>{@link hal.impl.ActuatorImpl#getType <em>Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -68,6 +70,26 @@ public class ActuatorImpl extends NamedElementImpl implements Actuator {
 	 * @ordered
 	 */
 	protected EList<IssuedCommand> commands;
+
+	/**
+	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final ActuatorType TYPE_EDEFAULT = ActuatorType.HEATER;
+
+	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected ActuatorType type = TYPE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -165,6 +187,27 @@ public class ActuatorImpl extends NamedElementImpl implements Actuator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ActuatorType getType() {
+		return type;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setType(ActuatorType newType) {
+		ActuatorType oldType = type;
+		type = newType == null ? TYPE_EDEFAULT : newType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HalPackage.ACTUATOR__TYPE, oldType, type));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<String> getPossibleCommands() {
 		if (possibleCommands == null) {
 			possibleCommands = new EDataTypeUniqueEList<String>(String.class, this, HalPackage.ACTUATOR__POSSIBLE_COMMANDS);
@@ -222,6 +265,8 @@ public class ActuatorImpl extends NamedElementImpl implements Actuator {
 				return getPossibleCommands();
 			case HalPackage.ACTUATOR__COMMANDS:
 				return getCommands();
+			case HalPackage.ACTUATOR__TYPE:
+				return getType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -246,6 +291,9 @@ public class ActuatorImpl extends NamedElementImpl implements Actuator {
 				getCommands().clear();
 				getCommands().addAll((Collection<? extends IssuedCommand>)newValue);
 				return;
+			case HalPackage.ACTUATOR__TYPE:
+				setType((ActuatorType)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -267,6 +315,9 @@ public class ActuatorImpl extends NamedElementImpl implements Actuator {
 			case HalPackage.ACTUATOR__COMMANDS:
 				getCommands().clear();
 				return;
+			case HalPackage.ACTUATOR__TYPE:
+				setType(TYPE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -285,6 +336,8 @@ public class ActuatorImpl extends NamedElementImpl implements Actuator {
 				return possibleCommands != null && !possibleCommands.isEmpty();
 			case HalPackage.ACTUATOR__COMMANDS:
 				return commands != null && !commands.isEmpty();
+			case HalPackage.ACTUATOR__TYPE:
+				return type != TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -301,6 +354,8 @@ public class ActuatorImpl extends NamedElementImpl implements Actuator {
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (possibleCommands: ");
 		result.append(possibleCommands);
+		result.append(", type: ");
+		result.append(type);
 		result.append(')');
 		return result.toString();
 	}

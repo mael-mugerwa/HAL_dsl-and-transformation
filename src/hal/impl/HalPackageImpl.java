@@ -4,6 +4,7 @@ package hal.impl;
 
 import hal.ActivityLog;
 import hal.Actuator;
+import hal.ActuatorType;
 import hal.AutomationRule;
 import hal.HALSystem;
 import hal.HalFactory;
@@ -14,8 +15,10 @@ import hal.Room;
 import hal.Sensor;
 import hal.SensorReading;
 
+import hal.SensorType;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -90,6 +93,20 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 * @generated
 	 */
 	private EClass automationRuleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum sensorTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum actuatorTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -193,7 +210,7 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHALSystem_Namedelement() {
+	public EReference getHALSystem_Readings() {
 		return (EReference)halSystemEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -202,7 +219,7 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHALSystem_Readings() {
+	public EReference getHALSystem_Commands() {
 		return (EReference)halSystemEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -211,8 +228,26 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHALSystem_Commands() {
+	public EReference getHALSystem_Rooms() {
 		return (EReference)halSystemEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHALSystem_Sensors() {
+		return (EReference)halSystemEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHALSystem_Actuators() {
+		return (EReference)halSystemEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -274,6 +309,15 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getSensor_Type() {
+		return (EAttribute)sensorEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getActuator() {
 		return actuatorEClass;
 	}
@@ -294,6 +338,15 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 */
 	public EReference getActuator_Commands() {
 		return (EReference)actuatorEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getActuator_Type() {
+		return (EAttribute)actuatorEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -472,6 +525,24 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getSensorType() {
+		return sensorTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getActuatorType() {
+		return actuatorTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public HalFactory getHalFactory() {
 		return (HalFactory)getEFactoryInstance();
 	}
@@ -499,9 +570,11 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 		createEAttribute(halSystemEClass, HAL_SYSTEM__HOME_ADDRESS);
 		createEReference(halSystemEClass, HAL_SYSTEM__RULES);
 		createEReference(halSystemEClass, HAL_SYSTEM__ACTIVITYLOG);
-		createEReference(halSystemEClass, HAL_SYSTEM__NAMEDELEMENT);
 		createEReference(halSystemEClass, HAL_SYSTEM__READINGS);
 		createEReference(halSystemEClass, HAL_SYSTEM__COMMANDS);
+		createEReference(halSystemEClass, HAL_SYSTEM__ROOMS);
+		createEReference(halSystemEClass, HAL_SYSTEM__SENSORS);
+		createEReference(halSystemEClass, HAL_SYSTEM__ACTUATORS);
 
 		roomEClass = createEClass(ROOM);
 		createEReference(roomEClass, ROOM__SENSORS);
@@ -510,11 +583,13 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 		sensorEClass = createEClass(SENSOR);
 		createEReference(sensorEClass, SENSOR__ROOM);
 		createEReference(sensorEClass, SENSOR__READINGS);
+		createEAttribute(sensorEClass, SENSOR__TYPE);
 
 		actuatorEClass = createEClass(ACTUATOR);
 		createEReference(actuatorEClass, ACTUATOR__ROOM);
 		createEAttribute(actuatorEClass, ACTUATOR__POSSIBLE_COMMANDS);
 		createEReference(actuatorEClass, ACTUATOR__COMMANDS);
+		createEAttribute(actuatorEClass, ACTUATOR__TYPE);
 
 		namedElementEClass = createEClass(NAMED_ELEMENT);
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
@@ -538,6 +613,10 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 
 		automationRuleEClass = createEClass(AUTOMATION_RULE);
 		createEReference(automationRuleEClass, AUTOMATION_RULE__ACTIVITYLOG);
+
+		// Create enums
+		sensorTypeEEnum = createEEnum(SENSOR_TYPE);
+		actuatorTypeEEnum = createEEnum(ACTUATOR_TYPE);
 	}
 
 	/**
@@ -577,9 +656,11 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 		initEAttribute(getHALSystem_HomeAddress(), ecorePackage.getEString(), "homeAddress", null, 0, 1, HALSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHALSystem_Rules(), this.getAutomationRule(), null, "rules", null, 0, -1, HALSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHALSystem_Activitylog(), this.getActivityLog(), null, "activitylog", null, 1, 1, HALSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHALSystem_Namedelement(), this.getNamedElement(), null, "namedelement", null, 0, -1, HALSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHALSystem_Readings(), this.getSensorReading(), null, "readings", null, 0, -1, HALSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHALSystem_Commands(), this.getIssuedCommand(), null, "commands", null, 0, -1, HALSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHALSystem_Rooms(), this.getRoom(), null, "rooms", null, 0, -1, HALSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHALSystem_Sensors(), this.getSensor(), null, "sensors", null, 0, -1, HALSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHALSystem_Actuators(), this.getActuator(), null, "actuators", null, 0, -1, HALSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(roomEClass, Room.class, "Room", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRoom_Sensors(), this.getSensor(), this.getSensor_Room(), "sensors", null, 0, -1, Room.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -588,11 +669,13 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 		initEClass(sensorEClass, Sensor.class, "Sensor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSensor_Room(), this.getRoom(), this.getRoom_Sensors(), "room", null, 1, 1, Sensor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSensor_Readings(), this.getSensorReading(), this.getSensorReading_Sensor(), "readings", null, 0, -1, Sensor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSensor_Type(), this.getSensorType(), "type", null, 0, 1, Sensor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(actuatorEClass, Actuator.class, "Actuator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getActuator_Room(), this.getRoom(), this.getRoom_Actuators(), "room", null, 1, 1, Actuator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getActuator_PossibleCommands(), ecorePackage.getEString(), "possibleCommands", null, 0, -1, Actuator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getActuator_Commands(), this.getIssuedCommand(), this.getIssuedCommand_Actuator(), "commands", null, 0, -1, Actuator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getActuator_Type(), this.getActuatorType(), "type", null, 0, 1, Actuator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 1, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -601,13 +684,13 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 		initEReference(getSensorReading_Activitylog(), this.getActivityLog(), this.getActivityLog_Readings(), "activitylog", null, 1, 1, SensorReading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSensorReading_Value(), ecorePackage.getEString(), "value", null, 0, 1, SensorReading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSensorReading_Timestamp(), ecorePackage.getEDate(), "timestamp", null, 0, 1, SensorReading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSensorReading_Sensor(), this.getSensor(), this.getSensor_Readings(), "sensor", null, 1, 1, SensorReading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSensorReading_Sensor(), this.getSensor(), this.getSensor_Readings(), "sensor", null, 0, 1, SensorReading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(issuedCommandEClass, IssuedCommand.class, "IssuedCommand", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getIssuedCommand_Activitylog(), this.getActivityLog(), this.getActivityLog_Commands(), "activitylog", null, 1, 1, IssuedCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIssuedCommand_Command(), ecorePackage.getEString(), "command", null, 0, 1, IssuedCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIssuedCommand_Timestamp(), ecorePackage.getEDate(), "timestamp", null, 0, 1, IssuedCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getIssuedCommand_Actuator(), this.getActuator(), this.getActuator_Commands(), "actuator", null, 1, 1, IssuedCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIssuedCommand_Actuator(), this.getActuator(), this.getActuator_Commands(), "actuator", null, 0, 1, IssuedCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(activityLogEClass, ActivityLog.class, "ActivityLog", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getActivityLog_Readings(), this.getSensorReading(), this.getSensorReading_Activitylog(), "readings", null, 0, 1, ActivityLog.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -616,6 +699,17 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 
 		initEClass(automationRuleEClass, AutomationRule.class, "AutomationRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAutomationRule_Activitylog(), this.getActivityLog(), this.getActivityLog_Rules(), "activitylog", null, 1, 1, AutomationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize enums and add enum literals
+		initEEnum(sensorTypeEEnum, SensorType.class, "SensorType");
+		addEEnumLiteral(sensorTypeEEnum, SensorType.TEMPERATURE);
+		addEEnumLiteral(sensorTypeEEnum, SensorType.MOVEMENT);
+		addEEnumLiteral(sensorTypeEEnum, SensorType.LIGHT);
+
+		initEEnum(actuatorTypeEEnum, ActuatorType.class, "ActuatorType");
+		addEEnumLiteral(actuatorTypeEEnum, ActuatorType.HEATER);
+		addEEnumLiteral(actuatorTypeEEnum, ActuatorType.LOCK);
+		addEEnumLiteral(actuatorTypeEEnum, ActuatorType.LIGHT_SWITCH);
 
 		// Create resource
 		createResource(eNS_URI);

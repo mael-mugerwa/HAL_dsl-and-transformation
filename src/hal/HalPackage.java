@@ -4,6 +4,7 @@ package hal;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -94,22 +95,13 @@ public interface HalPackage extends EPackage {
 	int HAL_SYSTEM__ACTIVITYLOG = 2;
 
 	/**
-	 * The feature id for the '<em><b>Namedelement</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HAL_SYSTEM__NAMEDELEMENT = 3;
-
-	/**
 	 * The feature id for the '<em><b>Readings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HAL_SYSTEM__READINGS = 4;
+	int HAL_SYSTEM__READINGS = 3;
 
 	/**
 	 * The feature id for the '<em><b>Commands</b></em>' containment reference list.
@@ -118,7 +110,34 @@ public interface HalPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HAL_SYSTEM__COMMANDS = 5;
+	int HAL_SYSTEM__COMMANDS = 4;
+
+	/**
+	 * The feature id for the '<em><b>Rooms</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HAL_SYSTEM__ROOMS = 5;
+
+	/**
+	 * The feature id for the '<em><b>Sensors</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HAL_SYSTEM__SENSORS = 6;
+
+	/**
+	 * The feature id for the '<em><b>Actuators</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HAL_SYSTEM__ACTUATORS = 7;
 
 	/**
 	 * The number of structural features of the '<em>HAL System</em>' class.
@@ -127,7 +146,7 @@ public interface HalPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HAL_SYSTEM_FEATURE_COUNT = 6;
+	int HAL_SYSTEM_FEATURE_COUNT = 8;
 
 	/**
 	 * The number of operations of the '<em>HAL System</em>' class.
@@ -268,13 +287,22 @@ public interface HalPackage extends EPackage {
 	int SENSOR__READINGS = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SENSOR__TYPE = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Sensor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SENSOR_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int SENSOR_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Sensor</em>' class.
@@ -332,13 +360,22 @@ public interface HalPackage extends EPackage {
 	int ACTUATOR__COMMANDS = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTUATOR__TYPE = NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Actuator</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTUATOR_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int ACTUATOR_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Actuator</em>' class.
@@ -571,6 +608,27 @@ public interface HalPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link hal.SensorType <em>Sensor Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see hal.SensorType
+	 * @see hal.impl.HalPackageImpl#getSensorType()
+	 * @generated
+	 */
+	int SENSOR_TYPE = 9;
+
+	/**
+	 * The meta object id for the '{@link hal.ActuatorType <em>Actuator Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see hal.ActuatorType
+	 * @see hal.impl.HalPackageImpl#getActuatorType()
+	 * @generated
+	 */
+	int ACTUATOR_TYPE = 10;
+
+
+	/**
 	 * Returns the meta object for class '{@link hal.HALSystem <em>HAL System</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -614,17 +672,6 @@ public interface HalPackage extends EPackage {
 	EReference getHALSystem_Activitylog();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link hal.HALSystem#getNamedelement <em>Namedelement</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Namedelement</em>'.
-	 * @see hal.HALSystem#getNamedelement()
-	 * @see #getHALSystem()
-	 * @generated
-	 */
-	EReference getHALSystem_Namedelement();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link hal.HALSystem#getReadings <em>Readings</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -645,6 +692,39 @@ public interface HalPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getHALSystem_Commands();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link hal.HALSystem#getRooms <em>Rooms</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Rooms</em>'.
+	 * @see hal.HALSystem#getRooms()
+	 * @see #getHALSystem()
+	 * @generated
+	 */
+	EReference getHALSystem_Rooms();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link hal.HALSystem#getSensors <em>Sensors</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Sensors</em>'.
+	 * @see hal.HALSystem#getSensors()
+	 * @see #getHALSystem()
+	 * @generated
+	 */
+	EReference getHALSystem_Sensors();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link hal.HALSystem#getActuators <em>Actuators</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Actuators</em>'.
+	 * @see hal.HALSystem#getActuators()
+	 * @see #getHALSystem()
+	 * @generated
+	 */
+	EReference getHALSystem_Actuators();
 
 	/**
 	 * Returns the meta object for class '{@link hal.Room <em>Room</em>}'.
@@ -711,6 +791,17 @@ public interface HalPackage extends EPackage {
 	EReference getSensor_Readings();
 
 	/**
+	 * Returns the meta object for the attribute '{@link hal.Sensor#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see hal.Sensor#getType()
+	 * @see #getSensor()
+	 * @generated
+	 */
+	EAttribute getSensor_Type();
+
+	/**
 	 * Returns the meta object for class '{@link hal.Actuator <em>Actuator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -741,6 +832,17 @@ public interface HalPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getActuator_Commands();
+
+	/**
+	 * Returns the meta object for the attribute '{@link hal.Actuator#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see hal.Actuator#getType()
+	 * @see #getActuator()
+	 * @generated
+	 */
+	EAttribute getActuator_Type();
 
 	/**
 	 * Returns the meta object for the attribute list '{@link hal.Actuator#getPossibleCommands <em>Possible Commands</em>}'.
@@ -947,6 +1049,26 @@ public interface HalPackage extends EPackage {
 	EReference getAutomationRule_Activitylog();
 
 	/**
+	 * Returns the meta object for enum '{@link hal.SensorType <em>Sensor Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Sensor Type</em>'.
+	 * @see hal.SensorType
+	 * @generated
+	 */
+	EEnum getSensorType();
+
+	/**
+	 * Returns the meta object for enum '{@link hal.ActuatorType <em>Actuator Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Actuator Type</em>'.
+	 * @see hal.ActuatorType
+	 * @generated
+	 */
+	EEnum getActuatorType();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1004,14 +1126,6 @@ public interface HalPackage extends EPackage {
 		EReference HAL_SYSTEM__ACTIVITYLOG = eINSTANCE.getHALSystem_Activitylog();
 
 		/**
-		 * The meta object literal for the '<em><b>Namedelement</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference HAL_SYSTEM__NAMEDELEMENT = eINSTANCE.getHALSystem_Namedelement();
-
-		/**
 		 * The meta object literal for the '<em><b>Readings</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1026,6 +1140,30 @@ public interface HalPackage extends EPackage {
 		 * @generated
 		 */
 		EReference HAL_SYSTEM__COMMANDS = eINSTANCE.getHALSystem_Commands();
+
+		/**
+		 * The meta object literal for the '<em><b>Rooms</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HAL_SYSTEM__ROOMS = eINSTANCE.getHALSystem_Rooms();
+
+		/**
+		 * The meta object literal for the '<em><b>Sensors</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HAL_SYSTEM__SENSORS = eINSTANCE.getHALSystem_Sensors();
+
+		/**
+		 * The meta object literal for the '<em><b>Actuators</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HAL_SYSTEM__ACTUATORS = eINSTANCE.getHALSystem_Actuators();
 
 		/**
 		 * The meta object literal for the '{@link hal.impl.RoomImpl <em>Room</em>}' class.
@@ -1080,6 +1218,14 @@ public interface HalPackage extends EPackage {
 		EReference SENSOR__READINGS = eINSTANCE.getSensor_Readings();
 
 		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SENSOR__TYPE = eINSTANCE.getSensor_Type();
+
+		/**
 		 * The meta object literal for the '{@link hal.impl.ActuatorImpl <em>Actuator</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1104,6 +1250,14 @@ public interface HalPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ACTUATOR__COMMANDS = eINSTANCE.getActuator_Commands();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ACTUATOR__TYPE = eINSTANCE.getActuator_Type();
 
 		/**
 		 * The meta object literal for the '<em><b>Possible Commands</b></em>' attribute list feature.
@@ -1266,6 +1420,26 @@ public interface HalPackage extends EPackage {
 		 * @generated
 		 */
 		EReference AUTOMATION_RULE__ACTIVITYLOG = eINSTANCE.getAutomationRule_Activitylog();
+
+		/**
+		 * The meta object literal for the '{@link hal.SensorType <em>Sensor Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hal.SensorType
+		 * @see hal.impl.HalPackageImpl#getSensorType()
+		 * @generated
+		 */
+		EEnum SENSOR_TYPE = eINSTANCE.getSensorType();
+
+		/**
+		 * The meta object literal for the '{@link hal.ActuatorType <em>Actuator Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hal.ActuatorType
+		 * @see hal.impl.HalPackageImpl#getActuatorType()
+		 * @generated
+		 */
+		EEnum ACTUATOR_TYPE = eINSTANCE.getActuatorType();
 
 	}
 

@@ -18,9 +18,11 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link hal.HALSystem#getHomeAddress <em>Home Address</em>}</li>
  *   <li>{@link hal.HALSystem#getRules <em>Rules</em>}</li>
  *   <li>{@link hal.HALSystem#getActivitylog <em>Activitylog</em>}</li>
- *   <li>{@link hal.HALSystem#getNamedelement <em>Namedelement</em>}</li>
  *   <li>{@link hal.HALSystem#getReadings <em>Readings</em>}</li>
  *   <li>{@link hal.HALSystem#getCommands <em>Commands</em>}</li>
+ *   <li>{@link hal.HALSystem#getRooms <em>Rooms</em>}</li>
+ *   <li>{@link hal.HALSystem#getSensors <em>Sensors</em>}</li>
+ *   <li>{@link hal.HALSystem#getActuators <em>Actuators</em>}</li>
  * </ul>
  *
  * @see hal.HalPackage#getHALSystem()
@@ -85,18 +87,6 @@ public interface HALSystem extends EObject {
 	void setActivitylog(ActivityLog value);
 
 	/**
-	 * Returns the value of the '<em><b>Namedelement</b></em>' containment reference list.
-	 * The list contents are of type {@link hal.NamedElement}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Namedelement</em>' containment reference list.
-	 * @see hal.HalPackage#getHALSystem_Namedelement()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<NamedElement> getNamedelement();
-
-	/**
 	 * Returns the value of the '<em><b>Readings</b></em>' containment reference list.
 	 * The list contents are of type {@link hal.SensorReading}.
 	 * <!-- begin-user-doc -->
@@ -119,5 +109,41 @@ public interface HALSystem extends EObject {
 	 * @generated
 	 */
 	EList<IssuedCommand> getCommands();
+
+	/**
+	 * Returns the value of the '<em><b>Rooms</b></em>' containment reference list.
+	 * The list contents are of type {@link hal.Room}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Rooms</em>' containment reference list.
+	 * @see hal.HalPackage#getHALSystem_Rooms()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Room> getRooms();
+
+	/**
+	 * Returns the value of the '<em><b>Sensors</b></em>' containment reference list.
+	 * The list contents are of type {@link hal.Sensor}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Sensors</em>' containment reference list.
+	 * @see hal.HalPackage#getHALSystem_Sensors()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Sensor> getSensors();
+
+	/**
+	 * Returns the value of the '<em><b>Actuators</b></em>' containment reference list.
+	 * The list contents are of type {@link hal.Actuator}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Actuators</em>' containment reference list.
+	 * @see hal.HalPackage#getHALSystem_Actuators()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Actuator> getActuators();
 
 } // HALSystem

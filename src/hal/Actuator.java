@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link hal.Actuator#getRoom <em>Room</em>}</li>
  *   <li>{@link hal.Actuator#getPossibleCommands <em>Possible Commands</em>}</li>
  *   <li>{@link hal.Actuator#getCommands <em>Commands</em>}</li>
+ *   <li>{@link hal.Actuator#getType <em>Type</em>}</li>
  * </ul>
  *
  * @see hal.HalPackage#getActuator()
@@ -60,6 +61,31 @@ public interface Actuator extends NamedElement {
 	 * @generated
 	 */
 	EList<IssuedCommand> getCommands();
+
+	/**
+	 * Returns the value of the '<em><b>Type</b></em>' attribute.
+	 * The literals are from the enumeration {@link hal.ActuatorType}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Type</em>' attribute.
+	 * @see hal.ActuatorType
+	 * @see #setType(ActuatorType)
+	 * @see hal.HalPackage#getActuator_Type()
+	 * @model
+	 * @generated
+	 */
+	ActuatorType getType();
+
+	/**
+	 * Sets the value of the '{@link hal.Actuator#getType <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Type</em>' attribute.
+	 * @see hal.ActuatorType
+	 * @see #getType()
+	 * @generated
+	 */
+	void setType(ActuatorType value);
 
 	/**
 	 * Returns the value of the '<em><b>Possible Commands</b></em>' attribute list.

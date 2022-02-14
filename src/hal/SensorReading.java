@@ -103,7 +103,7 @@ public interface SensorReading extends EObject {
 	 * @see #setSensor(Sensor)
 	 * @see hal.HalPackage#getSensorReading_Sensor()
 	 * @see hal.Sensor#getReadings
-	 * @model opposite="readings" required="true"
+	 * @model opposite="readings"
 	 * @generated
 	 */
 	Sensor getSensor();

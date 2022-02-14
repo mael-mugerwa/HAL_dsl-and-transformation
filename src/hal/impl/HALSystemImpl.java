@@ -3,11 +3,13 @@
 package hal.impl;
 
 import hal.ActivityLog;
+import hal.Actuator;
 import hal.AutomationRule;
 import hal.HALSystem;
 import hal.HalPackage;
 import hal.IssuedCommand;
-import hal.NamedElement;
+import hal.Room;
+import hal.Sensor;
 import hal.SensorReading;
 import java.util.Collection;
 
@@ -36,9 +38,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link hal.impl.HALSystemImpl#getHomeAddress <em>Home Address</em>}</li>
  *   <li>{@link hal.impl.HALSystemImpl#getRules <em>Rules</em>}</li>
  *   <li>{@link hal.impl.HALSystemImpl#getActivitylog <em>Activitylog</em>}</li>
- *   <li>{@link hal.impl.HALSystemImpl#getNamedelement <em>Namedelement</em>}</li>
  *   <li>{@link hal.impl.HALSystemImpl#getReadings <em>Readings</em>}</li>
  *   <li>{@link hal.impl.HALSystemImpl#getCommands <em>Commands</em>}</li>
+ *   <li>{@link hal.impl.HALSystemImpl#getRooms <em>Rooms</em>}</li>
+ *   <li>{@link hal.impl.HALSystemImpl#getSensors <em>Sensors</em>}</li>
+ *   <li>{@link hal.impl.HALSystemImpl#getActuators <em>Actuators</em>}</li>
  * </ul>
  *
  * @generated
@@ -85,16 +89,6 @@ public class HALSystemImpl extends MinimalEObjectImpl.Container implements HALSy
 	protected ActivityLog activitylog;
 
 	/**
-	 * The cached value of the '{@link #getNamedelement() <em>Namedelement</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNamedelement()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<NamedElement> namedelement;
-
-	/**
 	 * The cached value of the '{@link #getReadings() <em>Readings</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -113,6 +107,36 @@ public class HALSystemImpl extends MinimalEObjectImpl.Container implements HALSy
 	 * @ordered
 	 */
 	protected EList<IssuedCommand> commands;
+
+	/**
+	 * The cached value of the '{@link #getRooms() <em>Rooms</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRooms()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Room> rooms;
+
+	/**
+	 * The cached value of the '{@link #getSensors() <em>Sensors</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSensors()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Sensor> sensors;
+
+	/**
+	 * The cached value of the '{@link #getActuators() <em>Actuators</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getActuators()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Actuator> actuators;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -214,18 +238,6 @@ public class HALSystemImpl extends MinimalEObjectImpl.Container implements HALSy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<NamedElement> getNamedelement() {
-		if (namedelement == null) {
-			namedelement = new EObjectContainmentEList<NamedElement>(NamedElement.class, this, HalPackage.HAL_SYSTEM__NAMEDELEMENT);
-		}
-		return namedelement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<SensorReading> getReadings() {
 		if (readings == null) {
 			readings = new EObjectContainmentEList<SensorReading>(SensorReading.class, this, HalPackage.HAL_SYSTEM__READINGS);
@@ -250,6 +262,42 @@ public class HALSystemImpl extends MinimalEObjectImpl.Container implements HALSy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Room> getRooms() {
+		if (rooms == null) {
+			rooms = new EObjectContainmentEList<Room>(Room.class, this, HalPackage.HAL_SYSTEM__ROOMS);
+		}
+		return rooms;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Sensor> getSensors() {
+		if (sensors == null) {
+			sensors = new EObjectContainmentEList<Sensor>(Sensor.class, this, HalPackage.HAL_SYSTEM__SENSORS);
+		}
+		return sensors;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Actuator> getActuators() {
+		if (actuators == null) {
+			actuators = new EObjectContainmentEList<Actuator>(Actuator.class, this, HalPackage.HAL_SYSTEM__ACTUATORS);
+		}
+		return actuators;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -257,12 +305,16 @@ public class HALSystemImpl extends MinimalEObjectImpl.Container implements HALSy
 				return ((InternalEList<?>)getRules()).basicRemove(otherEnd, msgs);
 			case HalPackage.HAL_SYSTEM__ACTIVITYLOG:
 				return basicSetActivitylog(null, msgs);
-			case HalPackage.HAL_SYSTEM__NAMEDELEMENT:
-				return ((InternalEList<?>)getNamedelement()).basicRemove(otherEnd, msgs);
 			case HalPackage.HAL_SYSTEM__READINGS:
 				return ((InternalEList<?>)getReadings()).basicRemove(otherEnd, msgs);
 			case HalPackage.HAL_SYSTEM__COMMANDS:
 				return ((InternalEList<?>)getCommands()).basicRemove(otherEnd, msgs);
+			case HalPackage.HAL_SYSTEM__ROOMS:
+				return ((InternalEList<?>)getRooms()).basicRemove(otherEnd, msgs);
+			case HalPackage.HAL_SYSTEM__SENSORS:
+				return ((InternalEList<?>)getSensors()).basicRemove(otherEnd, msgs);
+			case HalPackage.HAL_SYSTEM__ACTUATORS:
+				return ((InternalEList<?>)getActuators()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -281,12 +333,16 @@ public class HALSystemImpl extends MinimalEObjectImpl.Container implements HALSy
 				return getRules();
 			case HalPackage.HAL_SYSTEM__ACTIVITYLOG:
 				return getActivitylog();
-			case HalPackage.HAL_SYSTEM__NAMEDELEMENT:
-				return getNamedelement();
 			case HalPackage.HAL_SYSTEM__READINGS:
 				return getReadings();
 			case HalPackage.HAL_SYSTEM__COMMANDS:
 				return getCommands();
+			case HalPackage.HAL_SYSTEM__ROOMS:
+				return getRooms();
+			case HalPackage.HAL_SYSTEM__SENSORS:
+				return getSensors();
+			case HalPackage.HAL_SYSTEM__ACTUATORS:
+				return getActuators();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -310,10 +366,6 @@ public class HALSystemImpl extends MinimalEObjectImpl.Container implements HALSy
 			case HalPackage.HAL_SYSTEM__ACTIVITYLOG:
 				setActivitylog((ActivityLog)newValue);
 				return;
-			case HalPackage.HAL_SYSTEM__NAMEDELEMENT:
-				getNamedelement().clear();
-				getNamedelement().addAll((Collection<? extends NamedElement>)newValue);
-				return;
 			case HalPackage.HAL_SYSTEM__READINGS:
 				getReadings().clear();
 				getReadings().addAll((Collection<? extends SensorReading>)newValue);
@@ -321,6 +373,18 @@ public class HALSystemImpl extends MinimalEObjectImpl.Container implements HALSy
 			case HalPackage.HAL_SYSTEM__COMMANDS:
 				getCommands().clear();
 				getCommands().addAll((Collection<? extends IssuedCommand>)newValue);
+				return;
+			case HalPackage.HAL_SYSTEM__ROOMS:
+				getRooms().clear();
+				getRooms().addAll((Collection<? extends Room>)newValue);
+				return;
+			case HalPackage.HAL_SYSTEM__SENSORS:
+				getSensors().clear();
+				getSensors().addAll((Collection<? extends Sensor>)newValue);
+				return;
+			case HalPackage.HAL_SYSTEM__ACTUATORS:
+				getActuators().clear();
+				getActuators().addAll((Collection<? extends Actuator>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -343,14 +407,20 @@ public class HALSystemImpl extends MinimalEObjectImpl.Container implements HALSy
 			case HalPackage.HAL_SYSTEM__ACTIVITYLOG:
 				setActivitylog((ActivityLog)null);
 				return;
-			case HalPackage.HAL_SYSTEM__NAMEDELEMENT:
-				getNamedelement().clear();
-				return;
 			case HalPackage.HAL_SYSTEM__READINGS:
 				getReadings().clear();
 				return;
 			case HalPackage.HAL_SYSTEM__COMMANDS:
 				getCommands().clear();
+				return;
+			case HalPackage.HAL_SYSTEM__ROOMS:
+				getRooms().clear();
+				return;
+			case HalPackage.HAL_SYSTEM__SENSORS:
+				getSensors().clear();
+				return;
+			case HalPackage.HAL_SYSTEM__ACTUATORS:
+				getActuators().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -370,12 +440,16 @@ public class HALSystemImpl extends MinimalEObjectImpl.Container implements HALSy
 				return rules != null && !rules.isEmpty();
 			case HalPackage.HAL_SYSTEM__ACTIVITYLOG:
 				return activitylog != null;
-			case HalPackage.HAL_SYSTEM__NAMEDELEMENT:
-				return namedelement != null && !namedelement.isEmpty();
 			case HalPackage.HAL_SYSTEM__READINGS:
 				return readings != null && !readings.isEmpty();
 			case HalPackage.HAL_SYSTEM__COMMANDS:
 				return commands != null && !commands.isEmpty();
+			case HalPackage.HAL_SYSTEM__ROOMS:
+				return rooms != null && !rooms.isEmpty();
+			case HalPackage.HAL_SYSTEM__SENSORS:
+				return sensors != null && !sensors.isEmpty();
+			case HalPackage.HAL_SYSTEM__ACTUATORS:
+				return actuators != null && !actuators.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
