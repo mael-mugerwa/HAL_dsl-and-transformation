@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <hal:HALSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:hal="https://www.mcgill.ca/emf/examples/hal" homeAddress="My Address">
-  <rooms name="r1" sensors="//@sensors.0 //@sensors.1" actuators="//@actuators.0 //@actuators.1"/>
-  <sensors name="s1" room="//@rooms.0"/>
-  <sensors name="s2" room="//@rooms.0" type="Light"/>
+  <rooms name="r1" sensors="//@sensors.0" actuators="//@actuators.0 //@actuators.1"/>
+  <sensors name="s2" room="//@rooms.0" type="Movement"/>
   <actuators name="a1" room="//@rooms.0" type="Lock"/>
   <actuators name="a2" room="//@rooms.0"/>
 </hal:HALSystem>

@@ -339,7 +339,7 @@ public class HalPage extends JFrame {
 	
 	private void devicesTableDeleteKeyActionPerformed(java.awt.event.ActionEvent evt) {
 		if (devicesTable.getSelectedRow() != -1) {
-			String deviceName = (String) devicesTable.getModel().getValueAt(devicesTable.getSelectedRow(), 0);
+			String deviceName = ((String) devicesTable.getModel().getValueAt(devicesTable.getSelectedRow(), 0)).split(":")[0];
 	        int choice = JOptionPane.showConfirmDialog(null, "Do you want to delete device " + deviceName + "?", 
 	        		"Confirm Deletion",	JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
 			if (choice == 0) { 

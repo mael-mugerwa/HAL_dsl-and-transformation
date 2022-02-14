@@ -226,7 +226,7 @@ public class HalController {
 	 * 
 	 * @param deviceName device to be deleted
 	 */
-	public static String deleteDevice(String deviceName) {
+	public static String deleteDevice(String deviceName) { 
 		Sensor s = findSensor(deviceName);
 		Actuator a = findActuator(deviceName);
 		// if device is not found, no error message is returned because the end result
