@@ -108,7 +108,7 @@ public class HalController {
 			// remove all sensors of the room
 			List<Sensor> sensorsToBeDeleted = new ArrayList<Sensor>();
 			for (Sensor s : halSystem.getSensors()) {
-				if (s.getRoom().equals(s)) {
+				if (s.getRoom().equals(r)) {
 					s.setRoom(null);
 					// don't remove sensor readings because need history kept in ActivityLog
 					s.getReadings().forEach(reading -> reading.setSensor(null));
@@ -123,7 +123,7 @@ public class HalController {
 			// remove all actuators of the room
 			List<Actuator> actuatorsToBeDeleted = new ArrayList<Actuator>();
 			for (Actuator a : halSystem.getActuators()) {
-				if (a.getRoom().equals(a)) {
+				if (a.getRoom().equals(r)) {
 					a.setRoom(null);
 					// don't remove issued commands because need history kept in ActivityLog
 					a.getCommands().forEach(command -> command.setActuator(null));
@@ -175,7 +175,7 @@ public class HalController {
 			halSystem.getSensors().add(s);
 			HalApplication.save();
 		} else {
-			return "Sensor type " + type + " is invalid";
+			return "Sensor type " + type + " is invalid. Must be one of: Temperature, Movement, Light.";
 		}
 		return null;
 	}
@@ -215,7 +215,7 @@ public class HalController {
 			halSystem.getActuators().add(a);
 			HalApplication.save();
 		} else {
-			return "Actuator type " + type + " is invalid";
+			return "Actuator type " + type + " is invalid. Must be one of: Heater, Lock, LightSwitch.";
 		}
 		return null;
 	}
@@ -320,7 +320,20 @@ public class HalController {
 			roomNames.add(r.getName());
 		}
 		return roomNames;
-	}	
+	}
+	
+	public static TODevice getDevice(String deviceName) {
+		TODevice result = null;
+		Sensor s = findSensor(deviceName);
+		Actuator a = findActuator(deviceName);
+		if (s != null)
+			result = new TODevice(s.getType().getName());
+		if (a != null)
+			result = new TODevice(a.getType().getName());	
+		
+		return result;		
+		
+	}
 	
 	//validation
 

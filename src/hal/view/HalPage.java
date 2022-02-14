@@ -51,8 +51,7 @@ public class HalPage extends JFrame {
 	private JScrollPane devicesScrollPane = new JScrollPane(devicesTable);
 	private JLabel removeDeviceLabel = new JLabel();
 	
-	// room's sensors
-		
+	// room's sensors		
 	private JLabel newSensorNameLabel = new JLabel();
 	private JTextField newSensorNameTextField = new JTextField();
 	private JLabel newSensorTypeLabel = new JLabel();
@@ -363,12 +362,12 @@ public class HalPage extends JFrame {
 		devicesDtm.setColumnIdentifiers(devicesColumnNames);
 		devicesTable.setModel(devicesDtm);
 		if (foundRoom != null) {			
-			for (String sensorName : foundRoom.getSensorNames()) {
-				Object[] obj = {sensorName};
+			for (String sensorName : foundRoom.getSensorNames()) {				
+				Object[] obj = {sensorName + ": " + HalController.getDevice(sensorName).getType() + " sensor"};
 				devicesDtm.addRow(obj);
 			}
 			for (String actuatorName : foundRoom.getActuatorNames()) {
-				Object[] obj = {actuatorName};
+				Object[] obj = {actuatorName + ": " + HalController.getDevice(actuatorName).getType() + " actuator"};
 				devicesDtm.addRow(obj);
 			}
 		}
