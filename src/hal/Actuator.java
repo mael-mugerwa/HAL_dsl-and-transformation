@@ -94,7 +94,7 @@ public interface Actuator extends NamedElement {
 	 * @return the value of the '<em>Possible Commands</em>' attribute.
 	 * @see #setPossibleCommands(String)
 	 * @see hal.HalPackage#getActuator_PossibleCommands()
-	 * @model unique="false" required="true"
+	 * @model unique="false"
 	 * @generated
 	 */
 	String getPossibleCommands();

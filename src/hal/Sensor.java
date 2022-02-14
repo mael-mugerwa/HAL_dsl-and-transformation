@@ -70,7 +70,7 @@ public interface Sensor extends NamedElement {
 	 * @see hal.SensorType
 	 * @see #setType(SensorType)
 	 * @see hal.HalPackage#getSensor_Type()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	SensorType getType();

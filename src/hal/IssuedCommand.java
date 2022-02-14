@@ -57,7 +57,7 @@ public interface IssuedCommand extends EObject {
 	 * @return the value of the '<em>Command</em>' attribute.
 	 * @see #setCommand(String)
 	 * @see hal.HalPackage#getIssuedCommand_Command()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getCommand();
@@ -79,7 +79,7 @@ public interface IssuedCommand extends EObject {
 	 * @return the value of the '<em>Timestamp</em>' attribute.
 	 * @see #setTimestamp(Date)
 	 * @see hal.HalPackage#getIssuedCommand_Timestamp()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	Date getTimestamp();

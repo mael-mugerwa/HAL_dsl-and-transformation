@@ -57,7 +57,7 @@ public interface SensorReading extends EObject {
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(String)
 	 * @see hal.HalPackage#getSensorReading_Value()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getValue();
@@ -79,7 +79,7 @@ public interface SensorReading extends EObject {
 	 * @return the value of the '<em>Timestamp</em>' attribute.
 	 * @see #setTimestamp(Date)
 	 * @see hal.HalPackage#getSensorReading_Timestamp()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	Date getTimestamp();

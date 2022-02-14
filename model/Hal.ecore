@@ -29,13 +29,13 @@
         eOpposite="#//Room/sensors"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="readings" upperBound="-1"
         eType="#//SensorReading" eOpposite="#//SensorReading/sensor"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//SensorType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//SensorType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Actuator" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="room" lowerBound="1" eType="#//Room"
         eOpposite="#//Room/actuators"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="possibleCommands" unique="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="commands" upperBound="-1"
         eType="#//IssuedCommand" eOpposite="#//IssuedCommand/actuator"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//ActuatorType"/>
@@ -46,16 +46,19 @@
   <eClassifiers xsi:type="ecore:EClass" name="SensorReading">
     <eStructuralFeatures xsi:type="ecore:EReference" name="activitylog" lowerBound="1"
         eType="#//ActivityLog" eOpposite="#//ActivityLog/readings"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sensor" eType="#//Sensor"
         eOpposite="#//Sensor/readings"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IssuedCommand">
     <eStructuralFeatures xsi:type="ecore:EReference" name="activitylog" lowerBound="1"
         eType="#//ActivityLog" eOpposite="#//ActivityLog/commands"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="command" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="command" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="actuator" eType="#//Actuator"
         eOpposite="#//Actuator/commands"/>
   </eClassifiers>
