@@ -19,8 +19,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -52,14 +50,24 @@ public class ActuatorImpl extends NamedElementImpl implements Actuator {
 	protected Room room;
 
 	/**
-	 * The cached value of the '{@link #getPossibleCommands() <em>Possible Commands</em>}' attribute list.
+	 * The default value of the '{@link #getPossibleCommands() <em>Possible Commands</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getPossibleCommands()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<String> possibleCommands;
+	protected static final String POSSIBLE_COMMANDS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getPossibleCommands() <em>Possible Commands</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPossibleCommands()
+	 * @generated
+	 * @ordered
+	 */
+	protected String possibleCommands = POSSIBLE_COMMANDS_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getCommands() <em>Commands</em>}' reference list.
@@ -208,11 +216,20 @@ public class ActuatorImpl extends NamedElementImpl implements Actuator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<String> getPossibleCommands() {
-		if (possibleCommands == null) {
-			possibleCommands = new EDataTypeUniqueEList<String>(String.class, this, HalPackage.ACTUATOR__POSSIBLE_COMMANDS);
-		}
+	public String getPossibleCommands() {
 		return possibleCommands;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPossibleCommands(String newPossibleCommands) {
+		String oldPossibleCommands = possibleCommands;
+		possibleCommands = newPossibleCommands;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HalPackage.ACTUATOR__POSSIBLE_COMMANDS, oldPossibleCommands, possibleCommands));
 	}
 
 	/**
@@ -284,8 +301,7 @@ public class ActuatorImpl extends NamedElementImpl implements Actuator {
 				setRoom((Room)newValue);
 				return;
 			case HalPackage.ACTUATOR__POSSIBLE_COMMANDS:
-				getPossibleCommands().clear();
-				getPossibleCommands().addAll((Collection<? extends String>)newValue);
+				setPossibleCommands((String)newValue);
 				return;
 			case HalPackage.ACTUATOR__COMMANDS:
 				getCommands().clear();
@@ -310,7 +326,7 @@ public class ActuatorImpl extends NamedElementImpl implements Actuator {
 				setRoom((Room)null);
 				return;
 			case HalPackage.ACTUATOR__POSSIBLE_COMMANDS:
-				getPossibleCommands().clear();
+				setPossibleCommands(POSSIBLE_COMMANDS_EDEFAULT);
 				return;
 			case HalPackage.ACTUATOR__COMMANDS:
 				getCommands().clear();
@@ -333,7 +349,7 @@ public class ActuatorImpl extends NamedElementImpl implements Actuator {
 			case HalPackage.ACTUATOR__ROOM:
 				return room != null;
 			case HalPackage.ACTUATOR__POSSIBLE_COMMANDS:
-				return possibleCommands != null && !possibleCommands.isEmpty();
+				return POSSIBLE_COMMANDS_EDEFAULT == null ? possibleCommands != null : !POSSIBLE_COMMANDS_EDEFAULT.equals(possibleCommands);
 			case HalPackage.ACTUATOR__COMMANDS:
 				return commands != null && !commands.isEmpty();
 			case HalPackage.ACTUATOR__TYPE:

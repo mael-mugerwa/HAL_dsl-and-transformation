@@ -34,11 +34,11 @@
   <eClassifiers xsi:type="ecore:EClass" name="Actuator" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="room" lowerBound="1" eType="#//Room"
         eOpposite="#//Room/actuators"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="possibleCommands" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="possibleCommands" unique="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="commands" upperBound="-1"
         eType="#//IssuedCommand" eOpposite="#//IssuedCommand/actuator"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//ActuatorType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//ActuatorType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

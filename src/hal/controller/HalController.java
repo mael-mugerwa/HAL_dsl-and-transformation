@@ -144,12 +144,13 @@ public class HalController {
 	/**
 	 * Add a new sensor or actuator to a specific type to the room
 	 * 
-	 * @param roomName   room to add device to
-	 * @param deviceName name of device
-	 * @param type       type of device
+	 * @param roomName         room to add device to
+	 * @param deviceName       name of device
+	 * @param type             type of device
+	 * @param possibleCommands is any for the actuator
 	 * @return error message or null if data saved successfully
 	 */
-	public static String addDevice(String roomName, String deviceName, String type) {
+	public static String addDevice(String roomName, String deviceName, String type, String possibleCommands) {
 		if (!existsRoom(roomName)) {
 			return "Room with name " + roomName + " does not exist";
 		}
@@ -179,6 +180,7 @@ public class HalController {
 			a.setRoom(r);
 			a.setName(deviceName);
 			a.setType(ActuatorType.get(type));
+			a.setPossibleCommands(possibleCommands);
 			r.getActuators().add(a);
 			halSystem.getActuators().add(a);
 			HalApplication.save();

@@ -342,7 +342,7 @@ public interface HalPackage extends EPackage {
 	int ACTUATOR__ROOM = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Possible Commands</b></em>' attribute list.
+	 * The feature id for the '<em><b>Possible Commands</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -845,10 +845,10 @@ public interface HalPackage extends EPackage {
 	EAttribute getActuator_Type();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link hal.Actuator#getPossibleCommands <em>Possible Commands</em>}'.
+	 * Returns the meta object for the attribute '{@link hal.Actuator#getPossibleCommands <em>Possible Commands</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Possible Commands</em>'.
+	 * @return the meta object for the attribute '<em>Possible Commands</em>'.
 	 * @see hal.Actuator#getPossibleCommands()
 	 * @see #getActuator()
 	 * @generated
@@ -1260,7 +1260,7 @@ public interface HalPackage extends EPackage {
 		EAttribute ACTUATOR__TYPE = eINSTANCE.getActuator_Type();
 
 		/**
-		 * The meta object literal for the '<em><b>Possible Commands</b></em>' attribute list feature.
+		 * The meta object literal for the '<em><b>Possible Commands</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

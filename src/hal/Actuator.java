@@ -71,7 +71,7 @@ public interface Actuator extends NamedElement {
 	 * @see hal.ActuatorType
 	 * @see #setType(ActuatorType)
 	 * @see hal.HalPackage#getActuator_Type()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	ActuatorType getType();
@@ -88,15 +88,25 @@ public interface Actuator extends NamedElement {
 	void setType(ActuatorType value);
 
 	/**
-	 * Returns the value of the '<em><b>Possible Commands</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.String}.
+	 * Returns the value of the '<em><b>Possible Commands</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Possible Commands</em>' attribute list.
+	 * @return the value of the '<em>Possible Commands</em>' attribute.
+	 * @see #setPossibleCommands(String)
 	 * @see hal.HalPackage#getActuator_PossibleCommands()
-	 * @model
+	 * @model unique="false" required="true"
 	 * @generated
 	 */
-	EList<String> getPossibleCommands();
+	String getPossibleCommands();
+
+	/**
+	 * Sets the value of the '{@link hal.Actuator#getPossibleCommands <em>Possible Commands</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Possible Commands</em>' attribute.
+	 * @see #getPossibleCommands()
+	 * @generated
+	 */
+	void setPossibleCommands(String value);
 
 } // Actuator

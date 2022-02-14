@@ -4,7 +4,7 @@
     <semanticResources>Hal.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_y4oRsIxtEeyHQKxnZXJTLA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_2-nPoIxtEeyHQKxnZXJTLA" name="hal class diagram" repPath="#_29vs8IxtEeyHQKxnZXJTLA" changeId="88e5481d-adba-417b-a51f-7e9f2a14ea34">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_2-nPoIxtEeyHQKxnZXJTLA" name="hal class diagram" repPath="#_29vs8IxtEeyHQKxnZXJTLA" changeId="950c570f-7298-48a1-a444-aae8fa0a4748">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="Hal.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -555,16 +555,16 @@
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_H-QgQIxxEeyHQKxnZXJTLA" name="possibleCommands : EString" tooltipText="">
         <target xmi:type="ecore:EAttribute" href="Hal.ecore#//Actuator/possibleCommands"/>
         <semanticElements xmi:type="ecore:EAttribute" href="Hal.ecore#//Actuator/possibleCommands"/>
-        <ownedStyle xmi:type="diagram:BundledImage" uid="_SR9kxIxxEeyHQKxnZXJTLA" labelAlignment="LEFT">
-          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
+        <ownedStyle xmi:type="diagram:BundledImage" uid="_ha6lBY0uEeyRAOK8pLbn0g" labelAlignment="LEFT" description="_GMnjgIxxEeyHQKxnZXJTLA">
+          <labelFormat>bold</labelFormat>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
       </ownedElements>
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_Yoa1kI0jEeyRAOK8pLbn0g" name="type : ActuatorType = Heater" tooltipText="">
         <target xmi:type="ecore:EAttribute" href="Hal.ecore#//Actuator/type"/>
         <semanticElements xmi:type="ecore:EAttribute" href="Hal.ecore#//Actuator/type"/>
-        <ownedStyle xmi:type="diagram:BundledImage" uid="_EiUNlo0kEeyRAOK8pLbn0g" labelAlignment="LEFT">
-          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
+        <ownedStyle xmi:type="diagram:BundledImage" uid="_jZmfRo0uEeyRAOK8pLbn0g" labelAlignment="LEFT" description="_GMnjgIxxEeyHQKxnZXJTLA">
+          <labelFormat>bold</labelFormat>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
       </ownedElements>
