@@ -5,7 +5,8 @@
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
     operationReflection="true" importOrganizing="true">
   <foreignModel>Hal.ecore</foreignModel>
-  <genPackages prefix="Hal" disposableProviderFactory="true" ecorePackage="Hal.ecore#/">
+  <genPackages prefix="Hal" basePackage="ca.mcgill.emf.examples" disposableProviderFactory="true"
+      ecorePackage="Hal.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Hal.ecore#//SensorType">
       <genEnumLiterals ecoreEnumLiteral="Hal.ecore#//SensorType/Temperature"/>
       <genEnumLiterals ecoreEnumLiteral="Hal.ecore#//SensorType/Movement"/>
