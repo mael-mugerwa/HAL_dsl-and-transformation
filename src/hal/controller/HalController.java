@@ -116,7 +116,7 @@ public class HalController {
 				}
 			}
 			while (sensorsToBeDeleted.size() > 0) {
-				Sensor s = sensorsToBeDeleted.get(0);
+				Sensor s = sensorsToBeDeleted.remove(0);
 				halSystem.getSensors().remove(s);
 			}
 
@@ -131,7 +131,7 @@ public class HalController {
 				}
 			}
 			while (actuatorsToBeDeleted.size() > 0) {
-				Actuator a = actuatorsToBeDeleted.get(0);
+				Actuator a = actuatorsToBeDeleted.remove(0);
 				halSystem.getActuators().remove(a);
 			}
 
