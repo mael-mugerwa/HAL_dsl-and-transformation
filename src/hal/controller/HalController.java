@@ -97,7 +97,7 @@ public class HalController {
 	 * 
 	 * @param roomName room to be deleted
 	 */
-	public static void deleteRoom(String roomName) {
+	public static String deleteRoom(String roomName) {
 		Room r = findRoom(roomName);
 		// if r is not found, no error message is returned because the end result is the
 		// same:
@@ -138,31 +138,30 @@ public class HalController {
 			// remove room
 			halSystem.getRooms().remove(r);
 			HalApplication.save();
-		}
+		}		
+		return null;
 	}
 
 	/**
-	 * Add a new sensor or actuator to a specific type to the room
+	 * Add a new sensor of a specific type to the room
 	 * 
 	 * @param roomName         room to add device to
-	 * @param deviceName       name of device
+	 * @param sensorName       name of device
 	 * @param type             type of device
-	 * @param possibleCommands is any for the actuator
 	 * @return error message or null if data saved successfully
 	 */
-	public static String addDevice(String roomName, String deviceName, String type, String possibleCommands) {
+	public static String addSensor(String roomName, String sensorName, String type) {
 		if (!existsRoom(roomName)) {
 			return "Room with name " + roomName + " does not exist";
 		}
-		if (isStringValid(deviceName)) {
+		if (isStringValid(sensorName)) {
 			return "Device name must be specified";
 		}
-		if (existsDevice(deviceName)) {
-			return "Device with name " + deviceName + " already exists";
+		if (existsDevice(sensorName)) {
+			return "Device with name " + sensorName + " already exists";
 		}
 
 		boolean isSensor = SensorType.get(type) != null;
-		boolean isActuator = ActuatorType.get(type) != null;
 
 		HALSystem halSystem = HalApplication.getHALSystem();
 		Room r = findRoom(roomName);
@@ -170,22 +169,53 @@ public class HalController {
 		if (isSensor) {
 			Sensor s = HalFactory.eINSTANCE.createSensor();
 			s.setRoom(r);
-			s.setName(deviceName);
+			s.setName(sensorName);
 			s.setType(SensorType.get(type));
 			r.getSensors().add(s);
 			halSystem.getSensors().add(s);
 			HalApplication.save();
-		} else if (isActuator) {
+		} else {
+			return "Sensor type " + type + " is invalid";
+		}
+		return null;
+	}
+	
+	/**
+	 * Add a new sensor or actuator to a specific type to the room
+	 * 
+	 * @param roomName         room to add device to
+	 * @param actuatorName       name of device
+	 * @param type             type of device
+	 * @param possibleCommands is any for the actuator
+	 * @return error message or null if data saved successfully
+	 */
+	public static String addActuator(String roomName, String actuatorName, String type, String possibleCommands) {
+		if (!existsRoom(roomName)) {
+			return "Room with name " + roomName + " does not exist";
+		}
+		if (isStringValid(actuatorName)) {
+			return "Device name must be specified";
+		}
+		if (existsDevice(actuatorName)) {
+			return "Device with name " + actuatorName + " already exists";
+		}
+
+		boolean isActuator = ActuatorType.get(type) != null;
+
+		HALSystem halSystem = HalApplication.getHALSystem();
+		Room r = findRoom(roomName);
+
+		if (isActuator) {
 			Actuator a = HalFactory.eINSTANCE.createActuator();
 			a.setRoom(r);
-			a.setName(deviceName);
+			a.setName(actuatorName);
 			a.setType(ActuatorType.get(type));
 			a.setPossibleCommands(possibleCommands);
 			r.getActuators().add(a);
 			halSystem.getActuators().add(a);
 			HalApplication.save();
 		} else {
-			return "Device type " + type + " is invalid";
+			return "Actuator type " + type + " is invalid";
 		}
 		return null;
 	}
@@ -196,7 +226,7 @@ public class HalController {
 	 * 
 	 * @param deviceName device to be deleted
 	 */
-	public static void deleteDevice(String deviceName) {
+	public static String deleteDevice(String deviceName) {
 		Sensor s = findSensor(deviceName);
 		Actuator a = findActuator(deviceName);
 		// if device is not found, no error message is returned because the end result
@@ -223,6 +253,8 @@ public class HalController {
 			halSystem.getActuators().remove(a);
 			HalApplication.save();
 		}
+		
+		return null;
 	}
 
 	/**
@@ -260,6 +292,37 @@ public class HalController {
 		}
 		return null;
 	}
+	
+	// query methods
+	// do not change the model but return data (either a basic type or transfer object)
+	
+	public static TORoom getRoom(String roomName) {
+		TORoom result = null;
+		Room r = findRoom(roomName);
+		if (r != null) {
+			List<String> sensorNames = new ArrayList<String>();
+			List<String> actuatorNames = new ArrayList<String>();
+			for (Sensor s : r.getSensors()) {
+				sensorNames.add(s.getName());
+			}
+			for (Actuator a : r.getActuators()) {
+				actuatorNames.add(a.getName());
+			}
+			result = new TORoom(r.getName(), sensorNames, actuatorNames);
+		}
+		return result;
+	}
+
+	public static List<String> getRooms() {
+		ArrayList<String> roomNames = new ArrayList<String>();
+		HALSystem hal = HalApplication.getHALSystem();
+		for (Room r : hal.getRooms()) {
+			roomNames.add(r.getName());
+		}
+		return roomNames;
+	}	
+	
+	//validation
 
 	private static boolean existsDevice(String deviceName) {
 		Actuator a = findActuator(deviceName);

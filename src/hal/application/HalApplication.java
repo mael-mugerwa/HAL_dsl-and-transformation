@@ -12,7 +12,7 @@ import hal.view.HalPage;
 
 public class HalApplication {
 	private static HALSystem halSystem;
-	private static String filename = "data/data.tournament";
+	private static String filename = "data/data.hal";
 
 	/**
 	 * @param args
