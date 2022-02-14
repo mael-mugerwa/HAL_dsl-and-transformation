@@ -108,7 +108,7 @@ public class HalController {
 			// remove all sensors of the room
 			List<Sensor> sensorsToBeDeleted = new ArrayList<Sensor>();
 			for (Sensor s : halSystem.getSensors()) {
-				if (s.getRoom().equals(s)) {
+				if (s.getRoom().equals(r)) {
 					s.setRoom(null);
 					// don't remove sensor readings because need history kept in ActivityLog
 					s.getReadings().forEach(reading -> reading.setSensor(null));
@@ -116,14 +116,14 @@ public class HalController {
 				}
 			}
 			while (sensorsToBeDeleted.size() > 0) {
-				Sensor s = sensorsToBeDeleted.get(0);
+				Sensor s = sensorsToBeDeleted.remove(0);
 				halSystem.getSensors().remove(s);
 			}
 
 			// remove all actuators of the room
 			List<Actuator> actuatorsToBeDeleted = new ArrayList<Actuator>();
 			for (Actuator a : halSystem.getActuators()) {
-				if (a.getRoom().equals(a)) {
+				if (a.getRoom().equals(r)) {
 					a.setRoom(null);
 					// don't remove issued commands because need history kept in ActivityLog
 					a.getCommands().forEach(command -> command.setActuator(null));
@@ -131,7 +131,7 @@ public class HalController {
 				}
 			}
 			while (actuatorsToBeDeleted.size() > 0) {
-				Actuator a = actuatorsToBeDeleted.get(0);
+				Actuator a = actuatorsToBeDeleted.remove(0);
 				halSystem.getActuators().remove(a);
 			}
 
